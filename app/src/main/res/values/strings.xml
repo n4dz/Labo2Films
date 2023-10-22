@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Labo2Films</string>
+    <string-array name="categorieFilm">
+        <item>Comédie</item>
+        <item>Suspense</item>
+        <item>Horreur</item>
+    </string-array>
 </resources>
