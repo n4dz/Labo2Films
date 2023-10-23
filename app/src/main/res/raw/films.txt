@@ -1,0 +1,16 @@
+num;titre;codeCateg;langue;cote
+1125;Le dernier empereur;1;FR;4
+1279;Ere de glace;2;FR;5
+1486;ET;2;AN;5
+1487;Maman j'ai ratÃ© l'avion;2;FR;3
+1979;Le sixiÃ¨me sens;3;FR;5
+1411;Les uns les autres;4;FR;4
+1316;Nouvelle France;1;FR;3
+1870;Et si c'Ã©tait vrai...;4;FR;3
+1293;Ma vie en kalÃ©idoscope;1;FR;2
+1182;Mystic river;1;AN;5
+1327;La petite sirÃ©ne;2;FR;2
+1734;Da Vinci Code;3;AN;4
+1954;La grande sÃ©duction;3;FR;3
+1836;Monsters;2;AN;1
+1399;Un flic Ã  la maternelle;5;FR;1
