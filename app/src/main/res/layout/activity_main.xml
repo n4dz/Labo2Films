@@ -91,14 +91,15 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/commentaire"
+
+        <ListView
+            android:id="@+id/listeFilm"
             android:layout_width="match_parent"
             android:layout_height="200dp"
-            android:inputType="text"
+            android:background="#CAC9C9"
             android:gravity="center"
-            android:hint="Liste des films"
-            android:background="#CAC9C9" />
+            android:hint="@string/liste_vide"
+            android:inputType="text" />
 
         <Button
             android:id="@+id/calculer"

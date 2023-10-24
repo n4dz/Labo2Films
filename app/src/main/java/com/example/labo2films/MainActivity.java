@@ -74,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
         //Button supprimer = findViewById(R.id.supprimer);
         lister.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                lister();
+                //showSpinner
             }
         });
 
