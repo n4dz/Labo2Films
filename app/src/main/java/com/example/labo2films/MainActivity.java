@@ -6,19 +6,17 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
-import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
-import java.util.EventListener;
 import java.util.StringTokenizer;
 
 public class MainActivity extends AppCompatActivity {
@@ -36,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        //gestionEvents();
+        gestionEvents();
         //lister();
     }
 
@@ -73,11 +71,66 @@ public class MainActivity extends AppCompatActivity {
        Button lister = findViewById(R.id.lister);
        Button categorie = findViewById(R.id.categorie);
        //Button ajouter = findViewById(R.id.ajouter);
-        // lister.setOnClickListener(new EventListener());
+        //Button supprimer = findViewById(R.id.supprimer);
+        lister.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                lister();
+            }
+        });
+
+        categorie.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                listerCatégorie();
+            }
+        });
+        /*
+        ajouter.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                ajouter();
+            }
+        });
+        */
+        /*
+        supprimer.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                supprimer();
+            }
+        });
+        */
+
     }
 
     private void ajouter(){
+        /*
+        int num, categ, cote;
+        String titre, langue;
 
+        TextView vw_num,vw_titre,vw_categ,vw_langue,vw_cote;
+        vw_num = findViewById(R.id.num);
+        vw_titre = findViewById(R.id.titre);
+        vw_categ = findViewById(R.id.categ);
+        vw_langue = findViewById(R.id.langue);
+        vw_cote = findViewById(R.id.cote);
+
+        num = vw_num.getText();
+        titre = vw_titre.getText();
+        categ = vw_categ.getText();
+        langue = vw_langue.getText();
+        cote = vw_cote.getText();
+
+        listeFilms.add(new Film(num, titre, categ, langue, cote));
+        */
+    }
+    private void supprimer(int id){
+        //TextView aSupprimer = findViewById(R.id.aSupprimer);
+        //id = parseInt(aSupprimer.getText()+"");
+        int trouver=-1;
+        for (Film unFilm : listeFilms){
+            if (unFilm.getNum() == id) {
+                trouver =  unFilm.getNum();
+            }
+        }
+        listeFilms.remove(trouver);
     }
     private void lister(){
 
@@ -85,6 +138,7 @@ public class MainActivity extends AppCompatActivity {
     private void listerCatégorie(){
 
     }
+
 
     @Override
     protected void onDestroy() {
