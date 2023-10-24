@@ -5,9 +5,11 @@ import static java.lang.Integer.parseInt;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -80,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
 
         categorie.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                listerCatégorie();
+                afficherSpinnerCatégorie();
             }
         });
         /*
@@ -135,8 +137,14 @@ public class MainActivity extends AppCompatActivity {
     private void lister(){
 
     }
-    private void listerCatégorie(){
-
+    private void afficherSpinnerCatégorie(){
+        //afficher spinner
+    }
+    private void listerCatégorie(int categorire){
+        Intent intent = new Intent(MainActivity.this, ListerParCategorieActivity.class);
+        intent.putExtra("listeFilms", listeFilms);
+        intent.putExtra("categorie", categorire);
+        ListerParCategorieActivity.launch(intent);
     }
 
 
