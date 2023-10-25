@@ -1,6 +1,8 @@
 package com.example.labo2films;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,7 +13,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 public class ListerParCategorieActivity extends AppCompatActivity {
-    ArrayList<Film>listeFilm;
+    ArrayList<Film>listeFilms;
     int categorie;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,7 +22,7 @@ public class ListerParCategorieActivity extends AppCompatActivity {
         gestionEvents();
         chargerDonnes();
         afficherCategorie();
-        //afficherFilms();
+        afficherFilms();
     }
 
     private void gestionEvents(){
@@ -29,7 +31,7 @@ public class ListerParCategorieActivity extends AppCompatActivity {
         retour.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 int nbF=0 , nbA = 0;
-                for (Film unFilm : listeFilm) {
+                for (Film unFilm : listeFilms) {
                     switch (unFilm.getLangue()) {
                         case "FR":
                             nbF++;
@@ -52,22 +54,25 @@ public class ListerParCategorieActivity extends AppCompatActivity {
         Bundle donnees = getIntent().getExtras();
         categorie = Integer.parseInt(donnees.getString("categorie"));
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.TIRAMISU) {
-            listeFilm = donnees.getParcelableArrayList("listeFilms",Film.class);
+            listeFilms = donnees.getParcelableArrayList("listeFilms",Film.class);
         }
     }
     private void afficherCategorie(){
-        /*
-        TextView categorie = findViewById(R.id.categorieChoisit);
-        categorie.setText("La catégorie choisit est "+categorie);
-        */
+        TextView vw_categorie = findViewById(R.id.categorieChoisit);
+        vw_categorie.setText("La catégorie choisit est "+categorie);
+
     }
     private void afficherFilms(){
         ArrayList<Film> newList=new ArrayList<Film>();
-        for (Film unFilm : listeFilm){
+        for (Film unFilm : listeFilms){
             if (unFilm.getCodeCateg() == categorie){
                 newList.add(unFilm);
             }
         }
-        //afficher les films dans la vue
+        RecyclerView recyclerView = findViewById(R.id.liste_film_categorie);
+        Film_RecyclerViewAdapter adapter = new Film_RecyclerViewAdapter(this,newList);
+        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
     }
 }
