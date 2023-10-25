@@ -7,6 +7,8 @@ import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Activity;
 import android.content.Context;
@@ -16,7 +18,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -32,7 +33,6 @@ import java.util.StringTokenizer;
 public class MainActivity extends AppCompatActivity {
     private ArrayList<Film> listeFilms;
     private String fichier = "films.txt";
-    private int vielleHauteur;
     private BufferedWriter ficSortie=null;
     private BufferedReader ficEntree=null;
     private Context context=MainActivity.this;
@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
         afficherCategorie();
         gestionEvents();
 
-        //lister();
+        lister();
     }
 
     private void isInInterne() throws IOException{
@@ -82,14 +82,13 @@ public class MainActivity extends AppCompatActivity {
     }
     private void gestionEvents(){
        Button lister = findViewById(R.id.lister);
-       Button categorie = findViewById(R.id.categorie);
+       Button categorie = findViewById(R.id.btn_categorie);
        Spinner spinner_categ= findViewById(R.id.spinnerCategorie);
        //Button ajouter = findViewById(R.id.ajouter);
         //Button supprimer = findViewById(R.id.supprimer);
         lister.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                //lister();
-                ajouter();
+                lister();
             }
         });
 
@@ -176,7 +175,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void lister(){
-
+        RecyclerView recyclerView = findViewById(R.id.listeFilm);
+        Film_RecyclerViewAdapter adapter = new Film_RecyclerViewAdapter(this,listeFilms);
+        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
 
     private void afficherSpinnerCatégorie(){

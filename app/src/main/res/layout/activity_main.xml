@@ -41,7 +41,7 @@
             android:textStyle="bold" />
 
         <Button
-            android:id="@+id/categorie"
+            android:id="@+id/btn_categorie"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -100,7 +100,7 @@
         android:orientation="vertical">
 
 
-        <ListView
+        <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/listeFilm"
             android:layout_width="match_parent"
             android:layout_height="200dp"
@@ -108,6 +108,7 @@
             android:gravity="center"
             android:hint="@string/liste_vide"
             android:inputType="text" />
+
 
         <Button
             android:id="@+id/calculer"

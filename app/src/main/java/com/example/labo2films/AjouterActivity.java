@@ -38,13 +38,13 @@ public class AjouterActivity extends AppCompatActivity {
         adapter_categorie.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner_categ.setAdapter(adapter_categorie);
 
-        Spinner spinner_langue = (Spinner) findViewById(R.id.langue);
+        Spinner spinner_langue = (Spinner) findViewById(R.id.spinner_langue);
         ArrayAdapter<String> adapter_langue = new ArrayAdapter<String>(this,
                 android.R.layout.simple_spinner_item, choix_langue);
         adapter_langue.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner_langue.setAdapter(adapter_langue);
 
-        Spinner spinner_cote = (Spinner) findViewById(R.id.cote);
+        Spinner spinner_cote = (Spinner) findViewById(R.id.spinner_cote);
         ArrayAdapter<String> adapter_cote = new ArrayAdapter<String>(this,
                 android.R.layout.simple_spinner_item, choix_cote);
         adapter_cote.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -76,11 +76,11 @@ public class AjouterActivity extends AppCompatActivity {
 
         TextView vw_num,vw_titre;
         Spinner vw_categ,vw_langue,vw_cote;
-        vw_num = findViewById(R.id.num);
-        vw_titre = findViewById(R.id.titre);
+        vw_num = findViewById(R.id.num_ajouter);
+        vw_titre = findViewById(R.id.titre_ajouter);
         vw_categ = findViewById(R.id.spinner_categorie);
-        vw_langue = findViewById(R.id.langue);
-        vw_cote = findViewById(R.id.cote);
+        vw_langue = findViewById(R.id.spinner_langue);
+        vw_cote = findViewById(R.id.spinner_cote);
 
         num = Integer.parseInt(vw_num.getText().toString());
         titre = vw_titre.getText().toString();
