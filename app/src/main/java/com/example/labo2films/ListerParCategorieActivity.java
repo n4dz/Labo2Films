@@ -17,14 +17,14 @@ public class ListerParCategorieActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lister_par_categorie);
-        gestionEvents();
+        //gestionEvents();
         chargerDonnes();
         afficherCategorie();
         afficherFilms();
     }
 
     private void gestionEvents(){
-
+/*
         Button retour = findViewById(R.id.retour);
         retour.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -46,7 +46,7 @@ public class ListerParCategorieActivity extends AppCompatActivity {
                 finish();
             }
         });
-
+*/
     }
     private void chargerDonnes(){
         Bundle donnees = getIntent().getExtras();
