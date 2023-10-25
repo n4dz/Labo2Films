@@ -17,14 +17,14 @@ public class ListerParCategorieActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lister_par_categorie);
-        //gestionEvents();
+        gestionEvents();
         chargerDonnes();
         afficherCategorie();
-        afficherFilms();
+        //afficherFilms();
     }
 
     private void gestionEvents(){
-/*
+
         Button retour = findViewById(R.id.retour);
         retour.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -40,17 +40,17 @@ public class ListerParCategorieActivity extends AppCompatActivity {
                     }
                 }
                 Intent result = new Intent();
-                result.putExtra("nbFrancais", nbF);
-                result.putExtra("nbAnglais", nbA);
+                result.putExtra("nbFrancais", nbF+"");
+                result.putExtra("nbAnglais", nbA+"");
                 setResult(RESULT_OK, result);
                 finish();
             }
         });
-*/
+
     }
     private void chargerDonnes(){
         Bundle donnees = getIntent().getExtras();
-        categorie = donnees.getInt("categorie");
+        categorie = Integer.parseInt(donnees.getString("categorie"));
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.TIRAMISU) {
             listeFilm = donnees.getParcelableArrayList("listeFilms",Film.class);
         }

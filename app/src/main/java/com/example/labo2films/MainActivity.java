@@ -175,11 +175,11 @@ public class MainActivity extends AppCompatActivity {
     }
     private void afficherSpinnerCatégorie(){
         Spinner spinner_categorie = findViewById(R.id.spinnerCategorie);
-        if (spinner_categorie.getVisibility()==View.INVISIBLE){
+        if (spinner_categorie.getVisibility()==View.GONE){
             spinner_categorie.setVisibility(View.VISIBLE);
         }
         else {
-            spinner_categorie.setVisibility(View.INVISIBLE);
+            spinner_categorie.setVisibility(View.GONE);
 
         }
     }
@@ -198,9 +198,20 @@ public class MainActivity extends AppCompatActivity {
                     if (result.getResultCode() == Activity.RESULT_OK) {
                         // There are no request codes
                         Intent donnees = result.getData();
-                        String taille = donnees.getStringExtra("nbFrancais");
+                        String nbF = donnees.getStringExtra("nbFrancais");
+                        String nbA = donnees.getStringExtra("nbAnglais");
                         // On affiche la donnée envoyé par activité 2
-                        Toast.makeText(MainActivity.this, taille,Toast.LENGTH_SHORT).show();
+                        TextView textNombre = findViewById(R.id.resultat);
+                        textNombre.setText("Nombre de film en français : "+nbF+"\nNombre de film en Anglais : "+nbA);
+                        textNombre.setVisibility(View.VISIBLE);
+                        new Thread(() -> {
+                            try {
+                                Thread.sleep(1000);
+                            } catch (InterruptedException e) {
+                                e.printStackTrace();
+                            }
+                            textNombre.setVisibility(View.VISIBLE);
+                        }).start();
                     }else {
                         Toast.makeText(MainActivity.this, "Problème avec activité 2",Toast.LENGTH_SHORT).show();
                     }
