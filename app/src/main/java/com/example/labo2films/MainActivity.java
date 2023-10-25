@@ -88,7 +88,8 @@ public class MainActivity extends AppCompatActivity {
         //Button supprimer = findViewById(R.id.supprimer);
         lister.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                //showSpinner
+                //lister();
+                ajouter();
             }
         });
 
@@ -127,28 +128,31 @@ public class MainActivity extends AppCompatActivity {
         */
 
     }
-
     private void ajouter(){
-        /*
-        int num, categ, cote;
-        String titre, langue;
-
-        TextView vw_num,vw_titre,vw_categ,vw_langue,vw_cote;
-        vw_num = findViewById(R.id.num);
-        vw_titre = findViewById(R.id.titre);
-        vw_categ = findViewById(R.id.categ);
-        vw_langue = findViewById(R.id.langue);
-        vw_cote = findViewById(R.id.cote);
-
-        num = vw_num.getText();
-        titre = vw_titre.getText();
-        categ = vw_categ.getText();
-        langue = vw_langue.getText();
-        cote = vw_cote.getText();
-
-        listeFilms.add(new Film(num, titre, categ, langue, cote));
-        */
+        Intent intent = new Intent(MainActivity.this, AjouterActivity.class);
+        intent.putExtra("listeFilms", listeFilms);
+        AjouterActivityResultLaucher.launch(intent);
     }
+
+    ActivityResultLauncher<Intent> AjouterActivityResultLaucher = registerForActivityResult(
+            new ActivityResultContracts.StartActivityForResult(),
+            new ActivityResultCallback<ActivityResult>() {
+                @Override
+                public void onActivityResult(ActivityResult result) {
+                    if (result.getResultCode() == Activity.RESULT_OK) {
+                        // There are no request codes
+                        Intent donnees = result.getData();
+                        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.TIRAMISU) {
+                            listeFilms = donnees.getParcelableArrayListExtra("listeFilms",Film.class);
+                        }
+                        // On affiche la donnée envoyé par activité 2
+                        lister();
+                    }else {
+                        Toast.makeText(MainActivity.this, "Problème avec activité 2",Toast.LENGTH_SHORT).show();
+                    }
+                }
+            });
+
     private void supprimer(int id){
         //TextView aSupprimer = findViewById(R.id.aSupprimer);
         //id = parseInt(aSupprimer.getText()+"");
@@ -168,12 +172,15 @@ public class MainActivity extends AppCompatActivity {
                 android.R.layout.simple_spinner_item, listeCategorie);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         s.setAdapter(adapter);
+        afficherSpinnerCatégorie();
     }
 
     private void lister(){
 
     }
+
     private void afficherSpinnerCatégorie(){
+
         Spinner spinner_categorie = findViewById(R.id.spinnerCategorie);
         if (spinner_categorie.getVisibility()==View.GONE){
             spinner_categorie.setVisibility(View.VISIBLE);
@@ -204,14 +211,6 @@ public class MainActivity extends AppCompatActivity {
                         TextView textNombre = findViewById(R.id.resultat);
                         textNombre.setText("Nombre de film en français : "+nbF+"\nNombre de film en Anglais : "+nbA);
                         textNombre.setVisibility(View.VISIBLE);
-                        new Thread(() -> {
-                            try {
-                                Thread.sleep(1000);
-                            } catch (InterruptedException e) {
-                                e.printStackTrace();
-                            }
-                            textNombre.setVisibility(View.VISIBLE);
-                        }).start();
                     }else {
                         Toast.makeText(MainActivity.this, "Problème avec activité 2",Toast.LENGTH_SHORT).show();
                     }

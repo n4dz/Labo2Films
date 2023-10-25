@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AjouterActivity">
+
+    <Button
+        android:id="@+id/retour_ajouter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="496dp"
+        android:text="retour"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/ajouter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="496dp"
+        android:text="ajouter"
+        app:layout_constraintStart_toEndOf="@+id/retour_ajouter"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/num"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="89dp"
+        android:layout_marginEnd="54dp"
+        android:ems="10"
+        android:inputType="number"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/titre"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="29dp"
+        android:layout_marginEnd="54dp"
+        android:ems="10"
+        android:inputType="text"
+        android:text="Name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/num" />
+
+    <Spinner
+        android:id="@+id/spinner_categorie"
+        android:layout_width="211dp"
+        android:layout_height="39dp"
+        android:layout_marginTop="29dp"
+        android:layout_marginEnd="54dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/titre" />
+
+    <Spinner
+        android:id="@+id/langue"
+        android:layout_width="209dp"
+        android:layout_height="36dp"
+        android:layout_marginTop="29dp"
+        android:layout_marginEnd="54dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinner_categorie" />
+
+    <Spinner
+        android:id="@+id/cote"
+        android:layout_width="209dp"
+        android:layout_height="36dp"
+        android:layout_marginTop="29dp"
+        android:layout_marginEnd="54dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/langue" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
