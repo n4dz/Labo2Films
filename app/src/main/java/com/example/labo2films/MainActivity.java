@@ -84,7 +84,8 @@ public class MainActivity extends AppCompatActivity {
        Button lister = findViewById(R.id.lister);
        Button categorie = findViewById(R.id.btn_categorie);
        Spinner spinner_categ= findViewById(R.id.spinnerCategorie);
-       //Button ajouter = findViewById(R.id.ajouter);
+       //Button ajouter = findViewById(R.id.ajouter);total
+        Button ajouter = findViewById(R.id.total);
         //Button supprimer = findViewById(R.id.supprimer);
         lister.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -111,13 +112,13 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-        /*
+
         ajouter.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 ajouter();
             }
         });
-        */
+
         /*
         supprimer.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -220,8 +221,8 @@ public class MainActivity extends AppCompatActivity {
             });
 
     @Override
-    protected void onDestroy() {
-        super.onDestroy();
+    protected void onPause() {
+        super.onPause();
         try {
             enregistrer();
         } catch (IOException e) {
