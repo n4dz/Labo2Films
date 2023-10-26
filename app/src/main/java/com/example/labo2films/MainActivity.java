@@ -18,6 +18,8 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -45,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        afficherCategorie();
+        remplirCategorie();
         gestionEvents();
 
         lister();
@@ -84,9 +86,10 @@ public class MainActivity extends AppCompatActivity {
        Button lister = findViewById(R.id.lister);
        Button categorie = findViewById(R.id.btn_categorie);
        Spinner spinner_categ= findViewById(R.id.spinnerCategorie);
-       //Button ajouter = findViewById(R.id.ajouter);total
-        Button ajouter = findViewById(R.id.total);
-        //Button supprimer = findViewById(R.id.supprimer);
+       //Button ajouter = findViewById(R.id.ajouter);
+        Button total = findViewById(R.id.total);
+        // Button supprimer = findViewById(R.id.supprimer);
+        Button supprimer = findViewById(R.id.a_supprimer);
         lister.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 lister();
@@ -112,20 +115,24 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-
+/*
         ajouter.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 ajouter();
             }
         });
+*/
 
-        /*
         supprimer.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 supprimer();
             }
         });
-        */
+        total.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                afficherSpinnerSupprimer();
+            }
+        });
 
     }
     private void ajouter(){
@@ -153,22 +160,34 @@ public class MainActivity extends AppCompatActivity {
                 }
             });
 
+    private void afficherSpinnerSupprimer(){
+        LinearLayout l = findViewById(R.id.layout_supprimer);
+        if (l.getVisibility()==View.GONE){
+            l.setVisibility(View.VISIBLE);
+        }
+        else {
+            l.setVisibility(View.GONE);
+        }
+    }
     private void supprimer(){
         int id=0;
-        //Spinner aSupprimer = findViewById(R.id.aSupprimer);
-        //id = parseInt(aSupprimer.getSelectedItem().toString());
+        EditText spinner_num = findViewById(R.id.NumSupp);
+        id = parseInt(spinner_num.getText().toString());
         Film trouver=null;
         for (Film unFilm : listeFilms){
             if (unFilm.getNum() == id) {
                 trouver =  unFilm;
             }
         }
-        if (trouver!=null) {
+        if (trouver!= null){
             listeFilms.remove(trouver);
+            lister();
         }
+        LinearLayout l = findViewById(R.id.layout_supprimer);
+        l.setVisibility(View.GONE);
     }
 
-    private void afficherCategorie(){
+    private void remplirCategorie(){
         String[] listeCategorie= new String []{"Choisir une catégorie","1","2","3","4","5"};
         Spinner s = (Spinner) findViewById(R.id.spinnerCategorie);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
@@ -224,8 +243,17 @@ public class MainActivity extends AppCompatActivity {
             });
 
     @Override
-    protected void onPause() {
-        super.onPause();
+    protected void onStop() {
+        super.onStop();
+        try {
+            enregistrer();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
         try {
             enregistrer();
         } catch (IOException e) {
