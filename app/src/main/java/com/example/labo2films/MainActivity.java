@@ -153,16 +153,19 @@ public class MainActivity extends AppCompatActivity {
                 }
             });
 
-    private void supprimer(int id){
-        //TextView aSupprimer = findViewById(R.id.aSupprimer);
-        //id = parseInt(aSupprimer.getText()+"");
-        int trouver=-1;
+    private void supprimer(){
+        int id=0;
+        //Spinner aSupprimer = findViewById(R.id.aSupprimer);
+        //id = parseInt(aSupprimer.getSelectedItem().toString());
+        Film trouver=null;
         for (Film unFilm : listeFilms){
             if (unFilm.getNum() == id) {
-                trouver =  unFilm.getNum();
+                trouver =  unFilm;
             }
         }
-        listeFilms.remove(trouver);
+        if (trouver!=null) {
+            listeFilms.remove(trouver);
+        }
     }
 
     private void afficherCategorie(){

@@ -9,6 +9,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -89,6 +90,7 @@ public class AjouterActivity extends AppCompatActivity {
         cote = Integer.parseInt(vw_cote.getSelectedItem().toString());
 
         listeFilms.add(new Film(num, titre, categ, langue, cote));
+        Toast.makeText(AjouterActivity.this, "Film enregistré",Toast.LENGTH_SHORT).show();
 
     }
 }
