@@ -86,10 +86,11 @@ public class MainActivity extends AppCompatActivity {
        Button lister = findViewById(R.id.lister);
        Button categorie = findViewById(R.id.btn_categorie);
        Spinner spinner_categ= findViewById(R.id.spinnerCategorie);
-       //Button ajouter = findViewById(R.id.ajouter);
+       Button ajouter = findViewById(R.id.afficherAjouter);
         Button total = findViewById(R.id.total);
-        // Button supprimer = findViewById(R.id.supprimer);
+        Button afficher_supprimer = findViewById(R.id.supprimer);
         Button supprimer = findViewById(R.id.a_supprimer);
+        Button quitter = findViewById(R.id.quitter);
         lister.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 lister();
@@ -115,22 +116,22 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-/*
+
         ajouter.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 ajouter();
             }
         });
-*/
+
 
         supprimer.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 supprimer();
             }
         });
-        total.setOnClickListener(new View.OnClickListener() {
+        afficher_supprimer.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                ajouter();
+                afficherSectionSupprimer();
             }
         });
 
@@ -159,7 +160,7 @@ public class MainActivity extends AppCompatActivity {
                 }
             });
 
-    private void afficherSpinnerSupprimer(){
+    private void afficherSectionSupprimer(){
         LinearLayout l = findViewById(R.id.layout_supprimer);
         if (l.getVisibility()==View.GONE){
             l.setVisibility(View.VISIBLE);
