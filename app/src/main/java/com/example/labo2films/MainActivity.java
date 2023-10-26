@@ -130,7 +130,7 @@ public class MainActivity extends AppCompatActivity {
         });
         total.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                afficherSpinnerSupprimer();
+                ajouter();
             }
         });
 
@@ -152,7 +152,6 @@ public class MainActivity extends AppCompatActivity {
                         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.TIRAMISU) {
                             listeFilms = donnees.getParcelableArrayListExtra("listeFilms",Film.class);
                         }
-                        // On affiche la donnée envoyé par activité 2
                         lister();
                     }else {
                         Toast.makeText(MainActivity.this, "Problème avec activité 2",Toast.LENGTH_SHORT).show();
@@ -181,7 +180,11 @@ public class MainActivity extends AppCompatActivity {
         }
         if (trouver!= null){
             listeFilms.remove(trouver);
+            Toast.makeText(MainActivity.this, "Film supprimer",Toast.LENGTH_SHORT).show();
             lister();
+        }
+        else{
+            Toast.makeText(MainActivity.this, "Cet id n'existe pas",Toast.LENGTH_SHORT).show();
         }
         LinearLayout l = findViewById(R.id.layout_supprimer);
         l.setVisibility(View.GONE);

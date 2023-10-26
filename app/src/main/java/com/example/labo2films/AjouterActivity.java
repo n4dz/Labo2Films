@@ -18,6 +18,7 @@ public class AjouterActivity extends AppCompatActivity {
     String[] choix_categ =new String[]{"Choisir une catégorie","1","2","3","4","5"};
     String[] choix_langue=new String[]{"Choisir une langue","FR","AN"};
     String[] choix_cote=new String[]{"Choisir une cote","1","2","3","4","5"};
+    String msg = "Problème ave l'enregistrement";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -73,7 +74,7 @@ public class AjouterActivity extends AppCompatActivity {
     private void ajouter(){
 
         int num, categ, cote;
-        String titre, langue;
+        String num_texte,titre, langue;
 
         TextView vw_num,vw_titre;
         Spinner vw_categ,vw_langue,vw_cote;
@@ -83,14 +84,31 @@ public class AjouterActivity extends AppCompatActivity {
         vw_langue = findViewById(R.id.spinner_langue);
         vw_cote = findViewById(R.id.spinner_cote);
 
-        num = Integer.parseInt(vw_num.getText().toString());
+        num_texte = vw_num.getText().toString();
         titre = vw_titre.getText().toString();
-        categ = Integer.parseInt(vw_categ.getSelectedItem().toString());
-        langue = vw_langue.getSelectedItem().toString();
-        cote = Integer.parseInt(vw_cote.getSelectedItem().toString());
+        if(num_texte.isEmpty()|| titre.isEmpty()||vw_categ.getSelectedItemPosition()==0||vw_langue.getSelectedItemPosition()==0 ||vw_cote.getSelectedItemPosition()==0){
+            Toast.makeText(AjouterActivity.this, "Veuillez remplir tout les champs " ,Toast.LENGTH_SHORT).show();
+        }
+        else{
+            num =Integer.parseInt(num_texte);
+            categ = Integer.parseInt(vw_categ.getSelectedItem().toString());
+            langue = vw_langue.getSelectedItem().toString();
+            cote = Integer.parseInt(vw_cote.getSelectedItem().toString());
 
-        listeFilms.add(new Film(num, titre, categ, langue, cote));
-        Toast.makeText(AjouterActivity.this, "Film enregistré",Toast.LENGTH_SHORT).show();
+            listeFilms.add(new Film(num, titre, categ, langue, cote));
+            Toast.makeText(AjouterActivity.this, "Film enregistré",Toast.LENGTH_SHORT).show();
+            vw_num.setText("");
+            vw_titre.setText("");
+            vw_categ.setSelection(0);
+            vw_langue.setSelection(0);
+            vw_cote.setSelection(0);
+        }
+        try{
+
+        }catch(Exception e){
+            Toast.makeText(AjouterActivity.this, "Problème d'enregistrement : "+e ,Toast.LENGTH_SHORT).show();
+        }
+
 
     }
 }
