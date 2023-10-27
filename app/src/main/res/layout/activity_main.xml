@@ -59,7 +59,7 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/ajouter"
+            android:id="@+id/afficherAjouter"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -69,7 +69,7 @@
             android:textStyle="bold" />
 
         <Button
-            android:id="@+id/supprimer"
+            android:id="@+id/afficherSectionSupprimer"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -112,7 +112,7 @@
             android:inputType="number" />
 
         <Button
-            android:id="@+id/a_supprimer"
+            android:id="@+id/afficher_supprimer"
             android:layout_width="69dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
