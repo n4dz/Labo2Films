@@ -45,22 +45,41 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="Catégorie"
-            android:textAlignment="center"
-            android:textSize="20dp"
-            android:textStyle="bold" />
-
-        <Button
-            android:id="@+id/total"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="Total"
+            android:text="Voir les catégories"
             android:textAlignment="center"
             android:textSize="20dp"
             android:textStyle="bold" />
 
     </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/sectionDeuxMenu"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/ajouter"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="Ajouter"
+            android:textAlignment="center"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/supprimer"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="Supprimer"
+            android:textAlignment="center"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
 
 
     <Spinner
@@ -78,15 +97,15 @@
         android:orientation="horizontal">
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/numFilmSupprimer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="TextView" />
+            android:text="Numéro du film:" />
 
         <EditText
             android:id="@+id/NumSupp"
-            android:layout_width="wrap_content"
+            android:layout_width="65dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
@@ -97,7 +116,7 @@
             android:layout_width="69dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Button" />
+            android:text="Supprimer" />
     </LinearLayout>
 
     <TextView
