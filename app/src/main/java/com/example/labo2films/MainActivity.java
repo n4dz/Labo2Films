@@ -87,7 +87,7 @@ public class MainActivity extends AppCompatActivity {
        Button categorie = findViewById(R.id.btn_categorie);
        Spinner spinner_categ= findViewById(R.id.spinnerCategorie);
        Button ajouter = findViewById(R.id.afficherAjouter);
-        Button total = findViewById(R.id.total);
+//        Button total = findViewById(R.id.total);
         Button afficher_supprimer = findViewById(R.id.supprimer);
         Button supprimer = findViewById(R.id.a_supprimer);
         Button quitter = findViewById(R.id.quitter);

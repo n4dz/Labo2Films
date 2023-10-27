@@ -69,7 +69,7 @@
             android:textStyle="bold" />
 
         <Button
-            android:id="@+id/afficherSectionSupprimer"
+            android:id="@+id/supprimer"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -112,7 +112,7 @@
             android:inputType="number" />
 
         <Button
-            android:id="@+id/afficher_supprimer"
+            android:id="@+id/a_supprimer"
             android:layout_width="69dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -158,12 +158,36 @@
             android:inputType="text" />
 
 
-        <Button
-            android:id="@+id/calculer"
+        <LinearLayout
+            android:id="@+id/sectionMenuViderQuitter"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:text="Vider" />
+            android:layout_height="50dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/vider"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="Vider"
+                android:textAlignment="center"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/quitter"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="Quitter"
+                android:textAlignment="center"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+
+
 
     </LinearLayout>
 
