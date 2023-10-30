@@ -10,6 +10,6 @@
 1182;Mystic river;1;AN;5
 1327;La petite sirène;2;FR;2
 1734;Da Vinci Code;3;AN;4
-1954;La grande sÃ©duction;3;FR;3
+1954;La grande séduction;3;FR;3
 1836;Monsters;2;AN;1
 1399;Un flic à la maternelle;5;FR;1

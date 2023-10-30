@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="56dp"
         android:layout_marginTop="496dp"
-        android:text="retour"
+        android:text="Retour"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -22,7 +22,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="100dp"
         android:layout_marginTop="496dp"
-        android:text="ajouter"
+        android:text="Ajouter"
         app:layout_constraintStart_toEndOf="@+id/retour_ajouter"
         app:layout_constraintTop_toTopOf="parent" />
 
