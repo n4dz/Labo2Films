@@ -15,10 +15,10 @@ import java.util.ArrayList;
 
 public class AjouterActivity extends AppCompatActivity {
     ArrayList<Film> listeFilms;
-    String[] choix_categ =new String[]{"Choisir une catégorie","1","2","3","4","5"};
+    String[] choix_categ =new String[]{"Choisir une cat.","1","2","3","4","5"};
     String[] choix_langue=new String[]{"Choisir une langue","FR","AN"};
     String[] choix_cote=new String[]{"Choisir une cote","1","2","3","4","5"};
-    String msg = "Problème ave l'enregistrement";
+    String msg = "Problème avec l'enregistrement";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -87,7 +87,7 @@ public class AjouterActivity extends AppCompatActivity {
         num_texte = vw_num.getText().toString();
         titre = vw_titre.getText().toString();
         if(num_texte.isEmpty()|| titre.isEmpty()||vw_categ.getSelectedItemPosition()==0||vw_langue.getSelectedItemPosition()==0 ||vw_cote.getSelectedItemPosition()==0){
-            Toast.makeText(AjouterActivity.this, "Veuillez remplir tout les champs " ,Toast.LENGTH_SHORT).show();
+            Toast.makeText(AjouterActivity.this, "Veuillez remplir tous les champs " ,Toast.LENGTH_SHORT).show();
         }
         else{
             num =Integer.parseInt(num_texte);

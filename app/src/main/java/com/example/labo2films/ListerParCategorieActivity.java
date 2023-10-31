@@ -59,7 +59,7 @@ public class ListerParCategorieActivity extends AppCompatActivity {
     }
     private void afficherCategorie(){
         TextView vw_categorie = findViewById(R.id.categorieChoisit);
-        vw_categorie.setText("La catégorie choisit est "+categorie);
+        vw_categorie.setText("La catégorie choisie est " + categorie);
 
     }
     private void afficherFilms(){

@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#bae8e8"
     tools:context=".ListerParCategorieActivity">
 
     <TextView
@@ -12,7 +13,7 @@
         android:layout_height="53dp"
         android:layout_marginTop="44dp"
         android:text="TextView"
-        android:textColor="#000000"
+        android:textColor="#2d334a"
         android:textSize="18sp"
         android:textStyle="bold"
         android:fontFamily="sans-serif"
@@ -25,6 +26,7 @@
         android:layout_width="410dp"
         android:layout_height="403dp"
         android:layout_marginTop="64dp"
+        android:background="#e3f6f5"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/categorieChoisit" />
@@ -34,7 +36,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="37dp"
-        android:text="Retour"
+        android:backgroundTint="@color/yellow"
+        android:textAlignment="center"
+        app:icon="@drawable/backward_icon"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/liste_film_categorie" />

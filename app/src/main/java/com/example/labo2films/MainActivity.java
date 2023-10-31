@@ -246,7 +246,7 @@ public class MainActivity extends AppCompatActivity {
                         String nbA = donnees.getStringExtra("nbAnglais");
                         // On affiche la donnée envoyé par activité 2
                         TextView textNombre = findViewById(R.id.resultat);
-                        textNombre.setText("Nombre de film en français : "+nbF+"\nNombre de film en Anglais : "+nbA);
+                        textNombre.setText("Nombre de film en français : "+nbF+"\nNombre de film en anglais : "+nbA);
                         textNombre.setVisibility(View.VISIBLE);
                     }else {
                         Toast.makeText(MainActivity.this, "Problème avec activité 2",Toast.LENGTH_SHORT).show();
@@ -292,7 +292,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         ficSortie.close();
-        Toast.makeText(MainActivity.this,"Films bien enregistré", Toast.LENGTH_SHORT).show();
+        Toast.makeText(MainActivity.this,"Film bien enregistré", Toast.LENGTH_SHORT).show();
     }
 
 }
