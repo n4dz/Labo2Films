@@ -194,6 +194,7 @@ public class MainActivity extends AppCompatActivity {
         }
         if (trouver!=null) {
             listeFilms.remove(trouver);
+            Toast.makeText(this, "Film supprimer." ,Toast.LENGTH_SHORT).show();
             aSupprimer.setText("");
             lister();
         }
