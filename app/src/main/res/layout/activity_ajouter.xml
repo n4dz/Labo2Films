@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,92 +7,211 @@
     android:background="#e3f6f5"
     tools:context=".AjouterActivity">
 
-    <Button
-        android:id="@+id/retour_ajouter"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="56dp"
-        android:layout_marginTop="496dp"
-        android:backgroundTint="@color/yellow"
-        app:icon="@drawable/backward_icon"
-        app:iconTint="@color/darkBlue"
-        app:iconSize="30dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/ajouter"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="100dp"
-        android:layout_marginTop="496dp"
-        android:backgroundTint="@color/yellow"
-        android:text="Ajouter"
-        android:fontFamily="serif"
-        android:textColor="#272343"
-        android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/retour_ajouter"
-        app:layout_constraintTop_toTopOf="parent" />
+    <LinearLayout
+        android:layout_width="146dp"
+        android:layout_height="match_parent"
+        android:background="#bae8e8"
+        android:orientation="vertical">
 
-    <EditText
-        android:id="@+id/num_ajouter"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="serif"
-        android:layout_marginTop="89dp"
-        android:layout_marginEnd="54dp"
-        android:ems="10"
-        android:hint="Numéro du film"
-        android:textColor="#272343"
-        android:inputType="number"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingTop="50dp">
 
-    <EditText
-        android:id="@+id/titre_ajouter"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="serif"
-        android:layout_marginTop="29dp"
-        android:layout_marginEnd="54dp"
-        android:ems="10"
-        android:hint="Titre du film"
-        android:textColor="#272343"
-        android:inputType="text"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/num_ajouter" />
+            <TextView
+                android:id="@+id/textViewNumFilm"
+                android:layout_width="match_parent"
+                android:layout_height="68dp"
+                android:fontFamily="serif"
+                android:text="Numéro du film: "
+                android:textColor="#272343"
+                android:textAlignment="center"
+                android:textStyle="bold"
+                tools:layout_editor_absoluteX="16dp"
+                tools:layout_editor_absoluteY="100dp" />
 
-    <Spinner
-        android:id="@+id/spinner_categorie"
-        android:layout_width="211dp"
-        android:layout_height="39dp"
-        android:fontFamily="serif"
-        android:textColor="#272343"
-        android:layout_marginTop="29dp"
-        android:layout_marginEnd="54dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/titre_ajouter" />
+            <TextView
+                android:id="@+id/textViewTitreFilm"
+                android:layout_width="match_parent"
+                android:layout_height="68dp"
+                android:text="Titre du film: "
+                android:fontFamily="serif"
+                android:textColor="#272343"
+                android:textAlignment="center"
+                android:textStyle="bold"
+                tools:layout_editor_absoluteX="16dp"
+                tools:layout_editor_absoluteY="178dp" />
 
-    <Spinner
-        android:id="@+id/spinner_langue"
-        android:layout_width="209dp"
-        android:layout_height="36dp"
-        android:fontFamily="serif"
-        android:textColor="#272343"
-        android:layout_marginTop="29dp"
-        android:layout_marginEnd="54dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinner_categorie" />
+            <TextView
+                android:id="@+id/textViewCategorie"
+                android:layout_width="match_parent"
+                android:layout_height="68dp"
+                android:text="Catégorie: "
+                android:fontFamily="serif"
+                android:textColor="#272343"
+                android:textAlignment="center"
+                android:textStyle="bold"
+                tools:layout_editor_absoluteX="16dp"
+                tools:layout_editor_absoluteY="248dp" />
 
-    <Spinner
-        android:id="@+id/spinner_cote"
-        android:layout_width="209dp"
-        android:layout_height="36dp"
-        android:fontFamily="serif"
-        android:textColor="#272343"
-        android:layout_marginTop="29dp"
-        android:layout_marginEnd="54dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinner_langue" />
+            <TextView
+                android:id="@+id/textViewLangue"
+                android:layout_width="match_parent"
+                android:layout_height="68dp"
+                android:text="Langue: "
+                android:fontFamily="serif"
+                android:textColor="#272343"
+                android:textAlignment="center"
+                android:textStyle="bold"
+                tools:layout_editor_absoluteX="16dp"
+                tools:layout_editor_absoluteY="314dp" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+            <TextView
+                android:id="@+id/textViewCote"
+                android:layout_width="match_parent"
+                android:layout_height="68dp"
+                android:text="Cote: "
+                android:fontFamily="serif"
+                android:textColor="#272343"
+                android:textAlignment="center"
+                android:textStyle="bold"
+                tools:layout_editor_absoluteX="16dp"
+                tools:layout_editor_absoluteY="379dp" />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="265dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="bottom"
+        android:layout_weight="0"
+        android:background="#e3f6f5"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="119dp"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/num_ajouter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="29dp"
+                android:layout_marginEnd="54dp"
+                android:ems="10"
+                android:fontFamily="serif"
+                android:hint="Numéro du film"
+                android:inputType="number"
+                android:textColor="#272343"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="68dp"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/titre_ajouter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:ems="10"
+                android:fontFamily="serif"
+                android:hint="Titre du film"
+                android:inputType="text"
+                android:textColor="#272343"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/num_ajouter" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="66dp"
+            android:orientation="horizontal">
+
+            <Spinner
+                android:id="@+id/spinner_categorie"
+                android:layout_width="211dp"
+                android:layout_height="39dp"
+                android:fontFamily="serif"
+                android:textColor="#272343"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/titre_ajouter" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="69dp"
+            android:orientation="horizontal">
+
+            <Spinner
+                android:id="@+id/spinner_langue"
+                android:layout_width="209dp"
+                android:layout_height="36dp"
+                android:fontFamily="serif"
+                android:textColor="#272343"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/spinner_categorie" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="69dp"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <Spinner
+                    android:id="@+id/spinner_cote"
+                    android:layout_width="209dp"
+                    android:layout_height="36dp"
+                    android:fontFamily="serif"
+                    android:textColor="#272343"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/spinner_langue" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:layout_marginTop="270dp">
+        <Button
+            android:id="@+id/retour_ajouter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/yellow"
+            app:icon="@drawable/backward_icon"
+            android:layout_marginLeft="5dp"
+            app:iconSize="30dp"
+            app:iconTint="@color/darkBlue" />
+
+        <Button
+            android:id="@+id/ajouter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/yellow"
+            android:fontFamily="serif"
+            android:text="Ajouter"
+            android:layout_marginLeft="40dp"
+            android:textColor="#272343"
+            android:textStyle="bold" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</LinearLayout>
