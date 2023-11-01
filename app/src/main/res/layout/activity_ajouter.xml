@@ -15,6 +15,7 @@
         android:layout_marginTop="496dp"
         android:backgroundTint="@color/yellow"
         app:icon="@drawable/backward_icon"
+        app:iconTint="@color/darkBlue"
         app:iconSize="30dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
