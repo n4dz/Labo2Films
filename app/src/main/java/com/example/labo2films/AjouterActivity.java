@@ -94,8 +94,12 @@ public class AjouterActivity extends AppCompatActivity {
             categ = Integer.parseInt(vw_categ.getSelectedItem().toString());
             langue = vw_langue.getSelectedItem().toString();
             cote = Integer.parseInt(vw_cote.getSelectedItem().toString());
+            Film unfilm = new Film(num, titre, categ, langue, cote);
+            listeFilms.add(unfilm);
 
-            listeFilms.add(new Film(num, titre, categ, langue, cote));
+            DatabaseHelper myDB = new DatabaseHelper(AjouterActivity.this);
+            myDB.ajouterFilm(unfilm);
+
             Toast.makeText(AjouterActivity.this, "Film enregistré",Toast.LENGTH_SHORT).show();
             vw_num.setText("");
             vw_titre.setText("");
