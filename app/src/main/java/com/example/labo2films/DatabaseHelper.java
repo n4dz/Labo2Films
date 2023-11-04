@@ -60,9 +60,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         //Initialisation de la table films
 
-        db.execSQL("INSERT INTO films ('code', 'titre', 'codecateg', 'langue', 'cote') VALUES (1125, 'Le dernier empereur', 1, 'FR', 4);");
-        db.execSQL("INSERT INTO films ('code', 'titre', 'codecateg', 'langue', 'cote') VALUES (1279, 'Ére de glace', 2, 'FR', 5);");
-        db.execSQL("INSERT INTO films ('code', 'titre', 'codecateg', 'langue', 'cote') VALUES (1486, 'ET', 2, 'AN', 5);");
+        db.execSQL("INSERT INTO " + TABLE_FILMS+ " ('code', 'titre', 'codecateg', 'langue', 'cote') VALUES (1125, 'Le dernier empereur', 1, 'FR', 4);");
+        db.execSQL("INSERT INTO " + TABLE_FILMS+ " ('code', 'titre', 'codecateg', 'langue', 'cote') VALUES (1279, 'Ére de glace', 2, 'FR', 5);");
+        db.execSQL("INSERT INTO " + TABLE_FILMS+ " ('code', 'titre', 'codecateg', 'langue', 'cote') VALUES (1486, 'ET', 2, 'AN', 5);");
 
         ContentValues values = new ContentValues();
         values.put("code", "1487");
@@ -72,7 +72,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put("cote", "5");
         db.insert("films", null, values);
 
-        db.execSQL("INSERT INTO films ('code', 'titre', 'codecateg', 'langue', 'cote') VALUES (1979, 'Le sixième sens', 3, 'FR', 5);");
+        db.execSQL("INSERT INTO " + TABLE_FILMS+ " ('code', 'titre', 'codecateg', 'langue', 'cote') VALUES (1979, 'Le sixième sens', 3, 'FR', 5);");
 
     }
 
