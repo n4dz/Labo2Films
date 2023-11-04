@@ -20,6 +20,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String COLUMN_NUMCATEG = "codecateg";
     private static final String COLUMN_LANGUE = "langue";
     private static final String COLUMN_COTE = "cote";
+    private static final String COLUMN_POCHETTE = "pochette";
 
     private static final String TABLE_CATEGORIES = "categories";
     private static final String COLUMN_CODECATEG = "idcateg";
@@ -47,6 +48,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 COLUMN_NUMCATEG + " INTEGER," +
                 COLUMN_LANGUE + " TEXT," +
                 COLUMN_COTE + " INTEGER," +
+                COLUMN_POCHETTE + " TEXT," +
                 "FOREIGN KEY (" + COLUMN_NUMCATEG +") REFERENCES " + TABLE_CATEGORIES+ " ("+ COLUMN_CODECATEG +"))";
         db.execSQL(tablefilms);
 
@@ -60,9 +62,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         //Initialisation de la table films
 
-        db.execSQL("INSERT INTO " + TABLE_FILMS+ " ('code', 'titre', 'codecateg', 'langue', 'cote') VALUES (1125, 'Le dernier empereur', 1, 'FR', 4);");
-        db.execSQL("INSERT INTO " + TABLE_FILMS+ " ('code', 'titre', 'codecateg', 'langue', 'cote') VALUES (1279, 'Ére de glace', 2, 'FR', 5);");
-        db.execSQL("INSERT INTO " + TABLE_FILMS+ " ('code', 'titre', 'codecateg', 'langue', 'cote') VALUES (1486, 'ET', 2, 'AN', 5);");
+        db.execSQL("INSERT INTO " + TABLE_FILMS+ " ('code', 'titre', 'codecateg', 'langue', 'cote', 'pochette') VALUES (1125, 'Le dernier empereur', 1, 'FR', 4, '');");
+        db.execSQL("INSERT INTO " + TABLE_FILMS+ " ('code', 'titre', 'codecateg', 'langue', 'cote', 'pochette') VALUES (1279, 'Ére de glace', 2, 'FR', 5, '');");
+        db.execSQL("INSERT INTO " + TABLE_FILMS+ " ('code', 'titre', 'codecateg', 'langue', 'cote', 'pochette') VALUES (1486, 'ET', 2, 'AN', 5, '');");
 
         ContentValues values = new ContentValues();
         values.put("code", "1487");
@@ -70,9 +72,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put("codecateg", "2");
         values.put("langue", "FR");
         values.put("cote", "5");
+        values.put("pochette", "");
         db.insert("films", null, values);
 
-        db.execSQL("INSERT INTO " + TABLE_FILMS+ " ('code', 'titre', 'codecateg', 'langue', 'cote') VALUES (1979, 'Le sixième sens', 3, 'FR', 5);");
+        db.execSQL("INSERT INTO " + TABLE_FILMS+ " ('code', 'titre', 'codecateg', 'langue', 'cote', 'pochette') VALUES (1979, 'Le sixième sens', 3, 'FR', 5, '');");
 
     }
 
@@ -98,6 +101,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(COLUMN_NUMCATEG,film.getCodeCateg());
         values.put(COLUMN_LANGUE, film.getLangue());
         values.put(COLUMN_COTE, film.getCote());
+        values.put(COLUMN_POCHETTE, film.getPochette());
 
         long result = db.insert(TABLE_FILMS, null, values);
         if(result == -1){

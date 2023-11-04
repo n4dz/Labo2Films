@@ -94,7 +94,8 @@ public class AjouterActivity extends AppCompatActivity {
             categ = Integer.parseInt(vw_categ.getSelectedItem().toString());
             langue = vw_langue.getSelectedItem().toString();
             cote = Integer.parseInt(vw_cote.getSelectedItem().toString());
-            Film unfilm = new Film(num, titre, categ, langue, cote);
+            String poch = String.valueOf('N');
+            Film unfilm = new Film(num, titre, categ, langue, cote, poch);
             listeFilms.add(unfilm);
 
             DatabaseHelper myDB = new DatabaseHelper(AjouterActivity.this);
