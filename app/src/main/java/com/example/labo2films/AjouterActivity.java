@@ -33,7 +33,7 @@ public class AjouterActivity extends AppCompatActivity {
         public void onActivityResult(Uri o) {
             if (o == null) {
                 Toast.makeText(AjouterActivity.this, "Aucune image selectionner", Toast.LENGTH_SHORT).show();
-                imageView.setImageDrawable(getDrawable(R.mipmap.film));
+                imageView.setImageDrawable(getDrawable(R.drawable.film));
             } else {
                 pochette = o.toString();
                 imageView.setImageURI(o);
