@@ -79,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
         StringTokenizer strtok;
         while (ligne!=null){
             strtok = new StringTokenizer(ligne,";");
-            listeFilms.add(new Film(parseInt(strtok.nextToken()),strtok.nextToken(),parseInt(strtok.nextToken()),strtok.nextToken(),parseInt(strtok.nextToken())));
+            listeFilms.add(new Film(parseInt(strtok.nextToken()),strtok.nextToken(),parseInt(strtok.nextToken()),strtok.nextToken(),parseInt(strtok.nextToken()),"Image"));
             ligne = ficEntree.readLine(); }
         ficEntree.close();
     }

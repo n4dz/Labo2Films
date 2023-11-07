@@ -1,12 +1,19 @@
 package com.example.labo2films;
 
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.PickVisualMediaRequest;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -19,6 +26,22 @@ public class AjouterActivity extends AppCompatActivity {
     String[] choix_langue=new String[]{"Choisir une langue","FR","AN"};
     String[] choix_cote=new String[]{"Choisir une cote","1","2","3","4","5"};
     String msg = "Problème avec l'enregistrement";
+    String pochette;
+    ImageView imageView ;
+    ActivityResultLauncher<PickVisualMediaRequest> launcher = registerForActivityResult(new ActivityResultContracts.PickVisualMedia(), new ActivityResultCallback<Uri>() {
+        @Override
+        public void onActivityResult(Uri o) {
+            if (o == null) {
+                Toast.makeText(AjouterActivity.this, "Aucune image selectionner", Toast.LENGTH_SHORT).show();
+                imageView.setImageDrawable(getDrawable(R.mipmap.film));
+            } else {
+                pochette = o.toString();
+                imageView.setImageURI(o);
+                //imageView.setImageURI(Uri.parse(pochette.toString()));
+            }
+        }
+    });
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,6 +49,8 @@ public class AjouterActivity extends AppCompatActivity {
         chargerDonnees();
         remplirSpinner();
         gestionEvent();
+
+
     }
     private void chargerDonnees(){
         Bundle donnees = getIntent().getExtras();
@@ -68,6 +93,17 @@ public class AjouterActivity extends AppCompatActivity {
                 ajouter();
             }
         });
+        Button btn_image = findViewById(R.id.button_image);
+        btn_image.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                imageView =findViewById(R.id.imageSelectionner);
+                launcher.launch(new PickVisualMediaRequest.Builder()
+                        .setMediaType(ActivityResultContracts.PickVisualMedia.ImageOnly.INSTANCE)
+
+                      .build());
+
+          }
+        });
 
     }
 
@@ -84,6 +120,7 @@ public class AjouterActivity extends AppCompatActivity {
         vw_langue = findViewById(R.id.spinner_langue);
         vw_cote = findViewById(R.id.spinner_cote);
 
+
         num_texte = vw_num.getText().toString();
         titre = vw_titre.getText().toString();
         if(num_texte.isEmpty()|| titre.isEmpty()||vw_categ.getSelectedItemPosition()==0||vw_langue.getSelectedItemPosition()==0 ||vw_cote.getSelectedItemPosition()==0){
@@ -94,7 +131,7 @@ public class AjouterActivity extends AppCompatActivity {
             categ = Integer.parseInt(vw_categ.getSelectedItem().toString());
             langue = vw_langue.getSelectedItem().toString();
             cote = Integer.parseInt(vw_cote.getSelectedItem().toString());
-            Film unfilm = new Film(num, titre, categ, langue, cote);
+            Film unfilm = new Film(num, titre, categ, langue, cote,pochette);
             listeFilms.add(unfilm);
 
             DatabaseHelper myDB = new DatabaseHelper(AjouterActivity.this);
@@ -115,4 +152,5 @@ public class AjouterActivity extends AppCompatActivity {
 
 
     }
+
 }

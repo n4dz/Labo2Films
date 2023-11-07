@@ -8,6 +8,7 @@ public class Film implements Serializable {
     private int codeCateg;
     private String langue;
     private int cote;
+    private String pochette;
 
     public Film(Film film){
         this.num = film.num;
@@ -17,12 +18,13 @@ public class Film implements Serializable {
         this.cote = film.cote;
     }
 
-    public Film(int num, String titre, int codeCateg, String langue, int cote) {
+    public Film(int num, String titre, int codeCateg, String langue, int cote, String pochette) {
         this.num = num;
         this.titre = titre;
         this.codeCateg = codeCateg;
         this.langue = langue;
         this.cote = cote;
+        this.pochette = pochette;
     }
 
 
@@ -64,5 +66,13 @@ public class Film implements Serializable {
 
     public void setCote(int cote) {
         this.cote = cote;
+    }
+
+    public String getPochette() {
+        return pochette;
+    }
+
+    public void setPochette(String pochette) {
+        this.pochette = pochette;
     }
 }
