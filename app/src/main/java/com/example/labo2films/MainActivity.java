@@ -50,6 +50,8 @@ public class MainActivity extends AppCompatActivity {
         afficherCategorie();
         afficherSupprimer();
         gestionEvents();
+        int chose = R.drawable.film;
+        System.out.println(chose);//2131230856
 
         lister();
     }
@@ -79,7 +81,7 @@ public class MainActivity extends AppCompatActivity {
         StringTokenizer strtok;
         while (ligne!=null){
             strtok = new StringTokenizer(ligne,";");
-            listeFilms.add(new Film(parseInt(strtok.nextToken()),strtok.nextToken(),parseInt(strtok.nextToken()),strtok.nextToken(),parseInt(strtok.nextToken()),"Image"));
+            listeFilms.add(new Film(parseInt(strtok.nextToken()),strtok.nextToken(),parseInt(strtok.nextToken()),strtok.nextToken(),parseInt(strtok.nextToken()),"Pochette"));
             ligne = ficEntree.readLine(); }
         ficEntree.close();
     }

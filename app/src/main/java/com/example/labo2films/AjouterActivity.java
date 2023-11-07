@@ -9,7 +9,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -34,6 +33,7 @@ public class AjouterActivity extends AppCompatActivity {
             if (o == null) {
                 Toast.makeText(AjouterActivity.this, "Aucune image selectionner", Toast.LENGTH_SHORT).show();
                 imageView.setImageDrawable(getDrawable(R.drawable.film));
+                pochette="Pochette";
             } else {
                 pochette = o.toString();
                 imageView.setImageURI(o);
