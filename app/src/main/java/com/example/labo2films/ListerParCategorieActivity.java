@@ -54,7 +54,8 @@ public class ListerParCategorieActivity extends AppCompatActivity {
         Bundle donnees = getIntent().getExtras();
         categorie = Integer.parseInt(donnees.getString("categorie"));
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.TIRAMISU) {
-            listeFilms = donnees.getParcelableArrayList("listeFilms",Film.class);
+            DatabaseHelper myDB = new DatabaseHelper(ListerParCategorieActivity.this);
+            listeFilms = myDB.listerFilmParCategorie(categorie);
         }
     }
     private void afficherCategorie(){
