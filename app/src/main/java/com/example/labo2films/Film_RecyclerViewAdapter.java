@@ -2,7 +2,9 @@ package com.example.labo2films;;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.res.Resources;
 import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.provider.MediaStore;
@@ -16,11 +18,13 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.content.res.AppCompatResources;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 
 public class Film_RecyclerViewAdapter extends RecyclerView.Adapter<Film_RecyclerViewAdapter.MyViewHolder> {
     Context context;
     ArrayList<Film> listefilms;
+    Resources resources;
     public  Film_RecyclerViewAdapter(Context context, ArrayList<Film> listefilms){
         this.context=context;
         this.listefilms = listefilms;
@@ -43,17 +47,20 @@ public class Film_RecyclerViewAdapter extends RecyclerView.Adapter<Film_Recycler
         holder.vw_langue.setText(listefilms.get(position).getLangue());
         holder.vw_cote.setText(listefilms.get(position).getCote() + "");
         String pochette = listefilms.get(position).getPochette();
-        if (pochette.charAt(0) == 'c') {
-            //
+
+        resources = context.getResources();
+        if (pochette.startsWith("content")) {
             try {
                 holder.vw_image.setImageURI(Uri.parse(pochette));
             } catch (Exception e) {
                 e.printStackTrace();
             }
         } else if (!pochette.equals("Pochette")) {
-            holder.vw_image.setImageResource(Integer.parseInt(pochette));
+            holder.vw_image.setImageResource(resources.getIdentifier(pochette, "drawable",
+                    context.getPackageName()));
         } else {
-            holder.vw_image.setImageResource(2131230856);
+            holder.vw_image.setImageResource(resources.getIdentifier("film", "drawable",
+                    context.getPackageName()));
         }
     }
 

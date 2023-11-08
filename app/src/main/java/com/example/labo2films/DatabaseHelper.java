@@ -65,9 +65,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         //Initialisation de la table films
 
-        db.execSQL("INSERT INTO " + TABLE_FILMS+ " ('code', 'titre', 'codecateg', 'langue', 'cote', 'pochette') VALUES (1125, 'Le dernier empereur', 1, 'FR', 4, '2131230947');");
-        db.execSQL("INSERT INTO " + TABLE_FILMS+ " ('code', 'titre', 'codecateg', 'langue', 'cote', 'pochette') VALUES (1279, 'Ére de glace', 2, 'FR', 5, '2131230949');");
-        db.execSQL("INSERT INTO " + TABLE_FILMS+ " ('code', 'titre', 'codecateg', 'langue', 'cote', 'pochette') VALUES (1486, 'ET', 2, 'AN', 5, '2131230948');");
+        db.execSQL("INSERT INTO " + TABLE_FILMS+ " ('code', 'titre', 'codecateg', 'langue', 'cote', 'pochette') VALUES (1125, 'Le dernier empereur', 1, 'FR', 4, 'empereur');");
+        db.execSQL("INSERT INTO " + TABLE_FILMS+ " ('code', 'titre', 'codecateg', 'langue', 'cote', 'pochette') VALUES (1279, 'Ére de glace', 2, 'FR', 5, 'glace');");
+        db.execSQL("INSERT INTO " + TABLE_FILMS+ " ('code', 'titre', 'codecateg', 'langue', 'cote', 'pochette') VALUES (1486, 'ET', 2, 'AN', 5, 'et');");
 
         ContentValues values = new ContentValues();
         values.put("code", "1487");
@@ -75,12 +75,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put("codecateg", "2");
         values.put("langue", "FR");
         values.put("cote", "5");
-        values.put("pochette", "2131230946");
+        values.put("pochette", "avion");
         db.insert("films", null, values);
 
 
-        db.execSQL("INSERT INTO " + TABLE_FILMS+ " ('code', 'titre', 'codecateg', 'langue', 'cote', 'pochette') VALUES (1979, 'Le sixième sens', 3, 'FR', 5, '2131230951');");
-        db.execSQL("INSERT INTO " + TABLE_FILMS+ " ('code', 'titre', 'codecateg', 'langue', 'cote', 'pochette') VALUES (1411, 'Les uns les autres', 4, 'FR', 4, '2131230950');");
+        db.execSQL("INSERT INTO " + TABLE_FILMS+ " ('code', 'titre', 'codecateg', 'langue', 'cote', 'pochette') VALUES (1979, 'Le sixième sens', 3, 'FR', 5, 'six');");
+        db.execSQL("INSERT INTO " + TABLE_FILMS+ " ('code', 'titre', 'codecateg', 'langue', 'cote', 'pochette') VALUES (1411, 'Les uns les autres', 4, 'FR', 4, 'lesuns');");
 
     }
 
