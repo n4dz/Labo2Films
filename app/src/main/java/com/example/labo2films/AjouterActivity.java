@@ -7,8 +7,11 @@ import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
+import android.util.Base64;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -17,6 +20,8 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class AjouterActivity extends AppCompatActivity {
@@ -25,19 +30,28 @@ public class AjouterActivity extends AppCompatActivity {
     String[] choix_langue=new String[]{"Choisir une langue","FR","AN"};
     String[] choix_cote=new String[]{"Choisir une cote","1","2","3","4","5"};
     String msg = "Problème avec l'enregistrement";
-    String pochette;
+    Uri pochette;
     ImageView imageView ;
+    int PICK_IMAGE_REQUEST = 111;
+    Bitmap bitmap;
     ActivityResultLauncher<PickVisualMediaRequest> launcher = registerForActivityResult(new ActivityResultContracts.PickVisualMedia(), new ActivityResultCallback<Uri>() {
         @Override
         public void onActivityResult(Uri o) {
             if (o == null) {
                 Toast.makeText(AjouterActivity.this, "Aucune image selectionner", Toast.LENGTH_SHORT).show();
                 imageView.setImageDrawable(getDrawable(R.drawable.film));
-                pochette="Pochette";
             } else {
-                pochette = o.toString();
+                try {
+                    bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), o);
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+                ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+                bitmap.compress(Bitmap.CompressFormat.JPEG,100,bytes);
+                String path = MediaStore.Images.Media.insertImage(getContentResolver(), bitmap,"File",null);
+                //Placer image dans ImageView
+                pochette =  Uri.parse(path.toString());
                 imageView.setImageURI(o);
-                //imageView.setImageURI(Uri.parse(pochette.toString()));
             }
         }
     });
@@ -48,6 +62,7 @@ public class AjouterActivity extends AppCompatActivity {
         setContentView(R.layout.activity_ajouter);
         chargerDonnees();
         remplirSpinner();
+
         gestionEvent();
 
 
@@ -101,8 +116,8 @@ public class AjouterActivity extends AppCompatActivity {
                         .setMediaType(ActivityResultContracts.PickVisualMedia.ImageOnly.INSTANCE)
 
                       .build());
+                }
 
-          }
         });
 
     }
@@ -120,7 +135,6 @@ public class AjouterActivity extends AppCompatActivity {
         vw_langue = findViewById(R.id.spinner_langue);
         vw_cote = findViewById(R.id.spinner_cote);
 
-
         num_texte = vw_num.getText().toString();
         titre = vw_titre.getText().toString();
         if(num_texte.isEmpty()|| titre.isEmpty()||vw_categ.getSelectedItemPosition()==0||vw_langue.getSelectedItemPosition()==0 ||vw_cote.getSelectedItemPosition()==0){
@@ -131,7 +145,13 @@ public class AjouterActivity extends AppCompatActivity {
             categ = Integer.parseInt(vw_categ.getSelectedItem().toString());
             langue = vw_langue.getSelectedItem().toString();
             cote = Integer.parseInt(vw_cote.getSelectedItem().toString());
-            Film unfilm = new Film(num, titre, categ, langue, cote,pochette);
+            Film unfilm;
+            if (pochette == null){
+                unfilm = new Film(num, titre, categ, langue, cote,"Pochette");
+            }
+            else {
+                unfilm = new Film(num, titre, categ, langue, cote, pochette.toString());
+            }
             listeFilms.add(unfilm);
 
             DatabaseHelper myDB = new DatabaseHelper(AjouterActivity.this);
@@ -143,14 +163,12 @@ public class AjouterActivity extends AppCompatActivity {
             vw_categ.setSelection(0);
             vw_langue.setSelection(0);
             vw_cote.setSelection(0);
+            imageView.setImageDrawable(getDrawable(R.drawable.film));
         }
         try{
 
         }catch(Exception e){
             Toast.makeText(AjouterActivity.this, "Problème d'enregistrement : "+e ,Toast.LENGTH_SHORT).show();
         }
-
-
     }
-
 }

@@ -81,7 +81,7 @@ public class MainActivity extends AppCompatActivity {
         StringTokenizer strtok;
         while (ligne!=null){
             strtok = new StringTokenizer(ligne,";");
-            listeFilms.add(new Film(parseInt(strtok.nextToken()),strtok.nextToken(),parseInt(strtok.nextToken()),strtok.nextToken(),parseInt(strtok.nextToken()),"Pochette"));
+            listeFilms.add(new Film(parseInt(strtok.nextToken()),strtok.nextToken(),parseInt(strtok.nextToken()),strtok.nextToken(),parseInt(strtok.nextToken()),strtok.nextToken()));
             ligne = ficEntree.readLine(); }
         ficEntree.close();
     }
@@ -291,7 +291,7 @@ public class MainActivity extends AppCompatActivity {
                 new OutputStreamWriter(openFileOutput(fichier,
                         MainActivity.MODE_PRIVATE)));
         for (Film unFilm : listeFilms){
-            ficSortie.write(unFilm.getNum()+";"+unFilm.getTitre()+";"+unFilm.getCodeCateg()+";"+unFilm.getLangue()+";"+unFilm.getCote()+";"+eol);
+            ficSortie.write(unFilm.getNum()+";"+unFilm.getTitre()+";"+unFilm.getCodeCateg()+";"+unFilm.getLangue()+";"+unFilm.getCote()+";"+unFilm.getPochette()+";"+eol);
         }
 
         ficSortie.close();

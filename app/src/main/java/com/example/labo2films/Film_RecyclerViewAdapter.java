@@ -2,8 +2,10 @@ package com.example.labo2films;;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
+import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,19 +37,22 @@ public class Film_RecyclerViewAdapter extends RecyclerView.Adapter<Film_Recycler
     @SuppressLint("ResourceType")
     @Override
     public void onBindViewHolder(@NonNull Film_RecyclerViewAdapter.MyViewHolder holder, int position) {
-        holder.vw_num.setText(listefilms.get(position).getNum()+"");
+        holder.vw_num.setText(listefilms.get(position).getNum() + "");
         holder.vw_titre.setText(listefilms.get(position).getTitre());
-        holder.vw_categorie.setText(listefilms.get(position).getCodeCateg()+"");
+        holder.vw_categorie.setText(listefilms.get(position).getCodeCateg() + "");
         holder.vw_langue.setText(listefilms.get(position).getLangue());
-        holder.vw_cote.setText(listefilms.get(position).getCote()+"");
+        holder.vw_cote.setText(listefilms.get(position).getCote() + "");
         String pochette = listefilms.get(position).getPochette();
-        if (pochette.indexOf(0) =='c'){
-            holder.vw_image.setImageURI(Uri.parse(pochette));
-        }
-        else if(!pochette.equals("Pochette")){
+        if (pochette.charAt(0) == 'c') {
+            //
+            try {
+                holder.vw_image.setImageURI(Uri.parse(pochette));
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        } else if (!pochette.equals("Pochette")) {
             holder.vw_image.setImageResource(Integer.parseInt(pochette));
-        }
-        else{
+        } else {
             holder.vw_image.setImageResource(2131230856);
         }
     }

@@ -1,15 +1,15 @@
-1125;Le dernier empereur;1;FR;4
-1279;Ère de glace;2;FR;5
-1486;ET;2;AN;5
-1487;Maman j'ai raté l'avion;2;FR;3
-1979;Le sixième sens;3;FR;5
-1411;Les uns les autres;4;FR;4
-1316;Nouvelle France;1;FR;3
-1870;Et si c'était vrai...;4;FR;3
-1293;Ma vie en kaléidoscope;1;FR;2
-1182;Mystic river;1;AN;5
-1327;La petite sirène;2;FR;2
-1734;Da Vinci Code;3;AN;4
-1954;La grande séduction;3;FR;3
-1836;Monsters;2;AN;1
-1399;Un flic à la maternelle;5;FR;1
+1125;Le dernier empereur;1;FR;4;Pochette
+1279;Ère de glace;2;FR;5;Pochette
+1486;ET;2;AN;5;Pochette
+1487;Maman j'ai raté l'avion;2;FR;3;Pochette
+1979;Le sixième sens;3;FR;5;Pochette
+1411;Les uns les autres;4;FR;4;Pochette
+1316;Nouvelle France;1;FR;3;Pochette
+1870;Et si c'était vrai...;4;FR;3;Pochette
+1293;Ma vie en kaléidoscope;1;FR;2;Pochette
+1182;Mystic river;1;AN;5;Pochette
+1327;La petite sirène;2;FR;2;Pochette
+1734;Da Vinci Code;3;AN;4;Pochette
+1954;La grande séduction;3;FR;3;Pochette
+1836;Monsters;2;AN;1;Pochette
+1399;Un flic à la maternelle;5;FR;1;Pochette
