@@ -180,14 +180,14 @@
             android:layout_height="wrap_content"
             android:layout_weight="2"
             android:text="Image"
-            android:textStyle="bold"/>
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/titreNum"
             android:layout_width="12dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Numéro"
+            android:text="Num."
             android:textStyle="bold" />
 
         <TextView
@@ -211,7 +211,7 @@
             android:layout_width="4dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Langue"
+            android:text="Lang."
             android:textStyle="bold" />
 
         <TextView
