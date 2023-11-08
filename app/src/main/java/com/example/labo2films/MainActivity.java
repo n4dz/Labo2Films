@@ -41,9 +41,6 @@ public class MainActivity extends AppCompatActivity {
         afficherCategorie();
         afficherSupprimer();
         gestionEvents();
-        int chose = R.drawable.film;
-        System.out.println(chose);//2131230856
-
         lister();
     }
     private void gestionEvents(){
