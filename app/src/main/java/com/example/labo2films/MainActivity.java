@@ -41,10 +41,11 @@ public class MainActivity extends AppCompatActivity {
         afficherCategorie();
         afficherSupprimer();
         gestionEvents();
+        int chose = R.drawable.film;
+        System.out.println(chose);//2131230856
 
         lister();
     }
-
     private void gestionEvents(){
        Button lister = findViewById(R.id.lister);
        Button categorie = findViewById(R.id.btn_categorie);
@@ -237,5 +238,4 @@ public class MainActivity extends AppCompatActivity {
         resultat.setVisibility(View.GONE);
 
     }
-
 }

@@ -7,9 +7,11 @@ import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
+import android.provider.MediaStore;
+import android.util.Base64;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -18,6 +20,8 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class AjouterActivity extends AppCompatActivity {
@@ -28,16 +32,27 @@ public class AjouterActivity extends AppCompatActivity {
     String msg = "Problème avec l'enregistrement";
     String pochette;
     ImageView imageView ;
+    int PICK_IMAGE_REQUEST = 111;
+    Bitmap bitmap;
     ActivityResultLauncher<PickVisualMediaRequest> launcher = registerForActivityResult(new ActivityResultContracts.PickVisualMedia(), new ActivityResultCallback<Uri>() {
         @Override
         public void onActivityResult(Uri o) {
             if (o == null) {
                 Toast.makeText(AjouterActivity.this, "Aucune image selectionner", Toast.LENGTH_SHORT).show();
                 imageView.setImageDrawable(getDrawable(R.drawable.film));
+                pochette = getDrawable(R.drawable.film)+"";
             } else {
-                pochette = o.toString();
+                try {
+                    bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), o);
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+                ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+                bitmap.compress(Bitmap.CompressFormat.JPEG,100,bytes);
+                String path = MediaStore.Images.Media.insertImage(getContentResolver(), bitmap,"File",null);
+                //Placer image dans ImageView
+                pochette = path;
                 imageView.setImageURI(o);
-                //imageView.setImageURI(Uri.parse(pochette.toString()));
             }
         }
     });
@@ -48,6 +63,7 @@ public class AjouterActivity extends AppCompatActivity {
         setContentView(R.layout.activity_ajouter);
         chargerDonnees();
         remplirSpinner();
+
         gestionEvent();
 
 
@@ -101,8 +117,8 @@ public class AjouterActivity extends AppCompatActivity {
                         .setMediaType(ActivityResultContracts.PickVisualMedia.ImageOnly.INSTANCE)
 
                       .build());
+                }
 
-          }
         });
 
     }
@@ -120,7 +136,6 @@ public class AjouterActivity extends AppCompatActivity {
         vw_langue = findViewById(R.id.spinner_langue);
         vw_cote = findViewById(R.id.spinner_cote);
 
-
         num_texte = vw_num.getText().toString();
         titre = vw_titre.getText().toString();
         if(num_texte.isEmpty()|| titre.isEmpty()||vw_categ.getSelectedItemPosition()==0||vw_langue.getSelectedItemPosition()==0 ||vw_cote.getSelectedItemPosition()==0){
@@ -131,7 +146,8 @@ public class AjouterActivity extends AppCompatActivity {
             categ = Integer.parseInt(vw_categ.getSelectedItem().toString());
             langue = vw_langue.getSelectedItem().toString();
             cote = Integer.parseInt(vw_cote.getSelectedItem().toString());
-            Film unfilm = new Film(num, titre, categ, langue, cote,pochette);
+            Film unfilm;
+            unfilm = new Film(num, titre, categ, langue, cote, pochette);
             listeFilms.add(unfilm);
 
             DatabaseHelper myDB = new DatabaseHelper(AjouterActivity.this);
@@ -143,14 +159,12 @@ public class AjouterActivity extends AppCompatActivity {
             vw_categ.setSelection(0);
             vw_langue.setSelection(0);
             vw_cote.setSelection(0);
+            imageView.setImageDrawable(getDrawable(R.drawable.film));
         }
         try{
 
         }catch(Exception e){
             Toast.makeText(AjouterActivity.this, "Problème d'enregistrement : "+e ,Toast.LENGTH_SHORT).show();
         }
-
-
     }
-
 }
