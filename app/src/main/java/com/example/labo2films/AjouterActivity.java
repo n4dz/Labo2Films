@@ -30,7 +30,7 @@ public class AjouterActivity extends AppCompatActivity {
     String[] choix_langue=new String[]{"Choisir une langue","FR","AN"};
     String[] choix_cote=new String[]{"Choisir une cote","1","2","3","4","5"};
     String msg = "Problème avec l'enregistrement";
-    Uri pochette;
+    String pochette;
     ImageView imageView ;
     int PICK_IMAGE_REQUEST = 111;
     Bitmap bitmap;
@@ -40,6 +40,7 @@ public class AjouterActivity extends AppCompatActivity {
             if (o == null) {
                 Toast.makeText(AjouterActivity.this, "Aucune image selectionner", Toast.LENGTH_SHORT).show();
                 imageView.setImageDrawable(getDrawable(R.drawable.film));
+                pochette = getDrawable(R.drawable.film)+"";
             } else {
                 try {
                     bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), o);
@@ -50,7 +51,7 @@ public class AjouterActivity extends AppCompatActivity {
                 bitmap.compress(Bitmap.CompressFormat.JPEG,100,bytes);
                 String path = MediaStore.Images.Media.insertImage(getContentResolver(), bitmap,"File",null);
                 //Placer image dans ImageView
-                pochette =  Uri.parse(path.toString());
+                pochette = path;
                 imageView.setImageURI(o);
             }
         }
@@ -146,12 +147,7 @@ public class AjouterActivity extends AppCompatActivity {
             langue = vw_langue.getSelectedItem().toString();
             cote = Integer.parseInt(vw_cote.getSelectedItem().toString());
             Film unfilm;
-            if (pochette == null){
-                unfilm = new Film(num, titre, categ, langue, cote,"Pochette");
-            }
-            else {
-                unfilm = new Film(num, titre, categ, langue, cote, pochette.toString());
-            }
+            unfilm = new Film(num, titre, categ, langue, cote, pochette);
             listeFilms.add(unfilm);
 
             DatabaseHelper myDB = new DatabaseHelper(AjouterActivity.this);
